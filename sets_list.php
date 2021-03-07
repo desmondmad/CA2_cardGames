@@ -27,6 +27,10 @@ include('includes/header.php');
         <?php foreach ($sets as $set) : ?>
         <tr>
             <td><?php echo $set['name']; ?></td>
+            <td><?php echo $set['set_ID']; ?></td>
+            <td><?php echo $set['price']; ?></td>
+            <td><?php echo $set['releaseDate']; ?></td>
+            <td><img src="images/<?php echo $set['setImage']; ?>" width="100px" height="100px" /></td>
             <td>
                 <form action="delete_set.php" method="post"
                       id="delete_set_form">

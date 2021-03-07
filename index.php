@@ -1,57 +1,58 @@
 <?php
 require_once('database.php');
 
-// Get category ID
-if (!isset($category_id)) {
-$category_id = filter_input(INPUT_GET, 'category_id', 
-FILTER_VALIDATE_INT);
-if ($category_id == NULL || $category_id == FALSE) {
-$category_id = 1;
-}
+// Get set ID
+if (!isset($set_id)) {
+$set_id = filter_input(INPUT_GET, 'set_id',FILTER_VALIDATE_INT);
+if ($set_id == NULL || $set_id == FALSE) {
+        $set_id =  1;
+    }
 }
 
-// Get name for current category
-$queryCategory = "SELECT * FROM categories
-WHERE categoryID = :category_id";
-$statement1 = $db->prepare($queryCategory);
-$statement1->bindValue(':category_id', $category_id);
+// Get name for current set
+$querySet = "SELECT * FROM sets
+WHERE set_ID = :set_id";
+$statement1 = $db->prepare($querySet);
+$statement1->bindValue(':set_id', $set_id);
 $statement1->execute();
-$category = $statement1->fetch();
+$sets = $statement1->fetch();
 $statement1->closeCursor();
-$category_name = $category['categoryName'];
 
-// Get all categories
-$queryAllCategories = 'SELECT * FROM categories
-ORDER BY categoryID';
-$statement2 = $db->prepare($queryAllCategories);
+// Get all sets
+$queryAllSets = 'SELECT * FROM sets
+ORDER BY set_ID';
+$statement2 = $db->prepare($queryAllSets);
 $statement2->execute();
-$categories = $statement2->fetchAll();
+$sets = $statement2->fetchAll();
 $statement2->closeCursor();
 
-// Get records for selected category
-$queryRecords = "SELECT * FROM records
-WHERE categoryID = :category_id
-ORDER BY recordID";
-$statement3 = $db->prepare($queryRecords);
-$statement3->bindValue(':category_id', $category_id);
+// Get cards for selected set
+$queryCards = "SELECT * FROM cards 
+WHERE set_ID = :set_id
+ORDER BY card_ID";
+$statement3 = $db->prepare($queryCards);
+$statement3->bindValue(':set_id', $set_id);
 $statement3->execute();
-$records = $statement3->fetchAll();
+$cards = $statement3->fetchAll();
 $statement3->closeCursor();
 ?>
+
 <div class="container">
 <?php
 include('includes/header.php');
 ?>
-<h1>Record List</h1>
+<main>
+    
+<h1>Welcome to Draw Phase, the only place in Ireland that sells cards</h1>
 
 <aside>
-<!-- display a list of categories -->
-<h2>Categories</h2>
+<!-- display a list of Sets -->
+<h2>Sets</h2>
 <nav>
 <ul>
-<?php foreach ($categories as $category) : ?>
-<li><a href=".?category_id=<?php echo $category['categoryID']; ?>">
-<?php echo $category['categoryName']; ?>
+<?php foreach ($sets as $set) : ?>
+<li><a href=".?set_id=<?php echo $set['set_ID']; ?>">
+<?php echo $set['name']; ?>
 </a>
 </li>
 <?php endforeach; ?>
@@ -60,42 +61,59 @@ include('includes/header.php');
 </aside>
 
 <section>
-<!-- display a table of records -->
-<h2><?php echo $category_name; ?></h2>
+<!-- display a table of cards -->
+
+<h2><?php echo $set['name']; ?></h2>
 <table>
 <tr>
 <th>Image</th>
+<th>setCode</th>
 <th>Name</th>
+<th>Attribute</th>
+<th>Type</th>
+<th>Card Type</th>
+<th>Level</th>
+<th>ATK</th>
+<th>DEF</th>
+<th>Set No.</th>
 <th>Price</th>
 <th>Delete</th>
 <th>Edit</th>
 </tr>
-<?php foreach ($records as $record) : ?>
+<?php foreach ($cards as $card) : ?>
 <tr>
-<td><img src="image_uploads/<?php echo $record['image']; ?>" width="100px" height="100px" /></td>
-<td><?php echo $record['name']; ?></td>
-<td class="right"><?php echo $record['price']; ?></td>
-<td><form action="delete_record.php" method="post"
-id="delete_record_form">
-<input type="hidden" name="record_id"
-value="<?php echo $record['recordID']; ?>">
-<input type="hidden" name="category_id"
-value="<?php echo $record['categoryID']; ?>">
+<td><img src="<?php echo $card['cardImage']; ?>" width="100px" height="100px" /></td>
+<td><?php echo $card['setCode']; ?></td>
+<td><?php echo $card['name']; ?></td>
+<td><?php echo $card['attribute']; ?></td>
+<td><?php echo $card['type']; ?></td>
+<td><?php echo $card['cardType']; ?></td>
+<td><?php echo $card['level']; ?></td>
+<td><?php echo $card['atk']; ?></td>
+<td><?php echo $card['def']; ?></td>
+<td><?php echo $card['setNumber']; ?></td>
+<td class="right"><?php echo $card['price']; ?></td>
+<td><form action="delete_card.php" method="post"
+id="delete_card_form">
+<input type="hidden" name="card_id"
+value="<?php echo $card['card_ID']; ?>">
+<input type="hidden" name="set_id"
+value="<?php echo $card['set_ID']; ?>">
 <input type="submit" value="Delete">
 </form></td>
-<td><form action="edit_record_form.php" method="post"
-id="delete_record_form">
-<input type="hidden" name="record_id"
-value="<?php echo $record['recordID']; ?>">
-<input type="hidden" name="category_id"
-value="<?php echo $record['categoryID']; ?>">
+<td><form action="edit_card_form.php" method="post"
+id="delete_card_form">
+<input type="hidden" name="card_id"
+value="<?php echo $card['card_ID']; ?>">
+<input type="hidden" name="set_id"
+value="<?php echo $card['set_ID']; ?>">
 <input type="submit" value="Edit">
 </form></td>
 </tr>
 <?php endforeach; ?>
 </table>
-<p><a href="add_record_form.php">Add Record</a></p>
-<p><a href="category_list.php">Manage Categories</a></p>
+<p><a href="add_card_form.php">Add Card</a></p>
+<p><a href="sets_list.php">Manage Sets</a></p>
 </section>
 <?php
 include('includes/footer.php');

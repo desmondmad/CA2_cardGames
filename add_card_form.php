@@ -18,12 +18,10 @@ include('includes/header.php');
               id="add_card_form">
 
             <label>Set:</label>
-            <select name="set_id">
+            <select name="set_ID">
             <?php foreach ($sets as $set) : ?>
                 <option value="<?php echo $set['set_ID']; ?>">
                     <?php echo $set['name']; ?>
-                    <?php echo $set['price']; ?>
-                    <?php echo $set['release']; ?>
                 </option>
             <?php endforeach; ?>
             </select>
@@ -32,10 +30,38 @@ include('includes/header.php');
             <input type="input" name="name">
             <br>
 
+            <label>Attribute:</label>
+            <input type="input" name="attribute">
+            <br>
+
+            <label>Type:</label>
+            <input type="input" name="type">
+            <br>
+
+            <label>Card Type:</label>
+            <input type="input" name="cardType">
+            <br>
+
+            <label>Level:</label>
+            <input type="input" name="level">
+            <br>
+
+            <label>ATK:</label>
+            <input type="input" name="atk">
+            <br>
+
+            <label>DEF:</label>
+            <input type="input" name="def">
+            <br>
+
+            <label>Set Number:</label>
+            <input type="input" name="setNumber">
+            <br> 
+
             <label>Price:</label>
             <input type="input" name="price">
             <br>        
-            
+
             <label>Image:</label>
             <input type="file" name="image" accept="image/*" />
             <br>

@@ -1,7 +1,7 @@
 <!-- the head section -->
 <head>
 <title>Draw Phase Card Shop</title>
-<link rel="stylesheet" type="text/css" href="main.css">
+<link rel="stylesheet" type="text/css" href="css/mystyle.css">
 </head>
 
 <!-- the body section -->
