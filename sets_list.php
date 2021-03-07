@@ -46,12 +46,12 @@ include('includes/header.php');
 
     <h2>Add Set</h2>
     <form action="add_set.php" method="post"
-          id="add_set_form">
-        <label>Set ID:</label>
-        <input type="input" name="set_ID">
+          id="add_set_form" enctype="multipart/form-data">
+        <label>SetCode:</label>
+        <input type="input" name="setCode">
         <br>
         <label>Name:</label>
-        <input type="input" name="name">
+        <input type="input" name="setName">
         <br>
         <label>Price:</label>
         <input type="input" name="price">  
@@ -60,7 +60,7 @@ include('includes/header.php');
         <input type="input" name="releaseDate">   
         <br> 
         <label>Image:</label>
-            <input type="file" name="image" accept="image/*" />
+            <input type="file" name="image"/>
         <br>
             
         <input id="add_set_button" type="submit" value="Add">
