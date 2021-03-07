@@ -14,8 +14,7 @@ $statement->closeCursor();
 include('includes/header.php');
 ?>
         <h1>Add Card</h1>
-        <form action="add_Card.php" method="post" enctype="multipart/form-data"
-              id="add_card_form">
+        <form action="add_Card.php" method="post" enctype="multipart/form-data" id="add_card_form">
 
             <label>Set:</label>
             <select name="set_ID">
@@ -26,6 +25,16 @@ include('includes/header.php');
             <?php endforeach; ?>
             </select>
             <br>
+            <label>SetCode:</label>
+            <select name="setCode">
+            <?php foreach ($sets as $set) : ?>
+                <option value="<?php echo $set['setCode']; ?>">
+                    <?php echo $set['setCode']; ?>
+                </option>
+            <?php endforeach; ?>
+            </select>
+            <br>
+            
             <label>Name:</label>
             <input type="input" name="name">
             <br>
@@ -63,7 +72,7 @@ include('includes/header.php');
             <br>        
 
             <label>Image:</label>
-            <input type="file" name="image" accept="image/*" />
+            <input type="file" name="image"/>
             <br>
             
             <label>&nbsp;</label>

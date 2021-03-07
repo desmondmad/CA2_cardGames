@@ -82,7 +82,7 @@ include('includes/header.php');
 </tr>
 <?php foreach ($cards as $card) : ?>
 <tr>
-<td><img src="<?php echo $card['cardImage']; ?>" width="100px" height="100px" /></td>
+<td><img src="images/<?php echo $card['cardImage']; ?>" width="100px" height="100px" /></td>
 <td><?php echo $card['setCode']; ?></td>
 <td><?php echo $card['name']; ?></td>
 <td><?php echo $card['attribute']; ?></td>

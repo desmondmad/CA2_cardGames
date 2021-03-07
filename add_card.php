@@ -1,7 +1,8 @@
 <?php
 
 // Get the product data
-$setCode = filter_input(INPUT_POST, 'setCode');
+$set_id = filter_input(INPUT_POST,'set_ID');
+$setCode = filter_input(INPUT_POST,'setCode');
 $name = filter_input(INPUT_POST, 'name');
 $attribute = filter_input(INPUT_POST, 'attribute');
 $type = filter_input(INPUT_POST, 'type');
@@ -13,8 +14,7 @@ $setNum = filter_input(INPUT_POST, 'setNumber');
 $price = filter_input(INPUT_POST, 'price', FILTER_VALIDATE_FLOAT);
 
 // Validate inputs
-if ($setCode == null ||
-    $name == null || $price == null || $price == false ||
+if ($name == null || $price == null || $price == false ||
     $attribute == null || $type == null || $cardType == null) {
     $error = "Invalid card data. Check all fields and try again.";
     include('error.php');
@@ -68,15 +68,15 @@ if ($setCode == null ||
     /************************** End Image upload **************************/
     
     require_once('database.php');
-
     // Add the product to the database 
     $query = "INSERT INTO cards
-                 (setCode,name, attribute, type, cardType, level, 
+                 (set_ID,setCode,name, attribute, type, cardType, level, 
                  atk, def, setNumber, price, cardImage)
               VALUES
-                 (:setCode,:name,:attribute,:type,:cardType,:level,
+                 (:set_id,:setCode,:name,:attribute,:type,:cardType,:level,
                  :atk, :def, :setNumber, :price, :image)";
     $statement = $db->prepare($query);
+    $statement->bindValue(':set_id', $set_id);
     $statement->bindValue(':setCode', $setCode);
     $statement->bindValue(':name', $name);
     $statement->bindValue(':attribute', $attribute);

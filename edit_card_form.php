@@ -22,28 +22,59 @@ include('includes/header.php');
             <input type="hidden" name="original_image" value="<?php echo $cards['image']; ?>" />
             <input type="hidden" name="card_id"
                    value="<?php echo $cards['cardID']; ?>">
+              <br>
 
             <label>Set ID:</label>
             <input type="set_id" name="set_id"
                    value="<?php echo $cards['set_ID']; ?>">
             <br>
 
+            <label>SetCode:</label>
+            <input type="setCode" name="setCode"
+                   value="<?php echo $cards['setCode']; ?>">
+            <br> 
+            
             <label>Name:</label>
-            <input type="input" name="name"
-                   value="<?php echo $cards['name']; ?>">
+            <input type="input" name="name">
             <br>
 
-            <label>List Price:</label>
-            <input type="input" name="price"
-                   value="<?php echo $cards['price']; ?>">
+            <label>Attribute:</label>
+            <input type="input" name="attribute">
             <br>
+
+            <label>Type:</label>
+            <input type="input" name="type">
+            <br>
+
+            <label>Card Type:</label>
+            <input type="input" name="cardType">
+            <br>
+
+            <label>Level:</label>
+            <input type="input" name="level">
+            <br>
+
+            <label>ATK:</label>
+            <input type="input" name="atk">
+            <br>
+
+            <label>DEF:</label>
+            <input type="input" name="def">
+            <br>
+
+            <label>Set Number:</label>
+            <input type="input" name="setNumber">
+            <br> 
+
+            <label>Price:</label>
+            <input type="input" name="price">
+            <br>  
 
             <label>Image:</label>
             <input type="file" name="image" accept="image/*" />
             <br>            
-            <?php if ($cards['image'] != "") { ?>
+            
             <p><img src="image/<?php echo $cards['image']; ?>" height="150" /></p>
-            <?php } ?>
             
             <label>&nbsp;</label>
             <input type="submit" value="Save Changes">
