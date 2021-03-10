@@ -20,62 +20,53 @@ include('includes/header.php');
         <form action="edit_card.php" method="post" enctype="multipart/form-data"
               id="add_card_form">
             <input type="hidden" name="original_image" value="<?php echo $cards['image']; ?>" />
-            <input type="hidden" name="card_id"
-                   value="<?php echo $cards['cardID']; ?>">
+            <input type="hidden" name="card_ID"
+                   value="<?php echo $cards['card_ID']; ?>">
               <br>
-
-            <label>Set ID:</label>
-            <input type="set_id" name="set_id"
-                   value="<?php echo $cards['set_ID']; ?>">
-            <br>
-
-            <label>SetCode:</label>
-            <input type="setCode" name="setCode"
-                   value="<?php echo $cards['setCode']; ?>">
-            <br> 
             
             <label>Name:</label>
-            <input type="input" name="name">
+            <input type="input" name="name" value="<?php echo $cards['name']; ?>">
             <br>
 
             <label>Attribute:</label>
-            <input type="input" name="attribute">
+            <input type="input" name="attribute" value="<?php echo $cards['attribute']; ?>">
             <br>
 
             <label>Type:</label>
-            <input type="input" name="type">
+            <input type="input" name="type" value="<?php echo $cards['type']; ?>">
             <br>
 
             <label>Card Type:</label>
-            <input type="input" name="cardType">
+            <input type="input" name="cardType" value="<?php echo $cards['cardType']; ?>">
             <br>
 
             <label>Level:</label>
-            <input type="input" name="level">
+            <input type="input" name="level" value="<?php echo $cards['level']; ?>">
             <br>
 
             <label>ATK:</label>
-            <input type="input" name="atk">
+            <input type="input" name="atk" value="<?php echo $cards['atk']; ?>">
             <br>
 
             <label>DEF:</label>
-            <input type="input" name="def">
+            <input type="input" name="def" value="<?php echo $cards['def']; ?>">
             <br>
 
             <label>Set Number:</label>
-            <input type="input" name="setNumber">
+            <input type="input" name="setNumber" value="<?php echo $cards['setNumber']; ?>">
             <br> 
 
             <label>Price:</label>
-            <input type="input" name="price">
+            <input type="input" name="price" value="<?php echo $cards['price']; ?>">
             <br>  
 
             <label>Image:</label>
-            <input type="file" name="image" accept="image/*" />
-            <br>            
-            
-            <p><img src="image/<?php echo $cards['image']; ?>" height="150" /></p>
-            
+            <input type="file" name="image"/>
+            <br>  
+            <?php if ($cards['cardImage'] != "") { ?>
+            <p><img src="images/<?php echo $cards['cardImage']; ?>" height="150" /></p>
+            <?php } ?>          
+
             <label>&nbsp;</label>
             <input type="submit" value="Save Changes">
             <br>
