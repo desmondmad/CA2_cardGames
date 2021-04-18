@@ -43,7 +43,7 @@ include('includes/header.php');
 ?>
 <main>
     
-<h1>Welcome to Draw Phase, the only place in Ireland that sells cards</h1>
+<h1 class="index_h1">Welcome to Draw Phase, the only place in Ireland that sells cards</h1>
 
 <aside>
 <!-- display a list of Sets -->
