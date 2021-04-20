@@ -1,4 +1,10 @@
 <?php
+
+
+/**
+ * Print out something that only logged in users can see.
+ */
+
 require_once('database.php');
 
 // Get set ID
@@ -52,7 +58,7 @@ include('includes/header.php');
 <nav>
 <ul>
 <?php foreach ($sets as $set) : ?>
-<li><a href=".?set_id=<?php echo $set['set_ID']; ?>">
+<li><a href="?set_id=<?php echo $set['set_ID']; ?>">
 <?php echo $set['name'];
 ?>
 </a>
@@ -77,8 +83,7 @@ include('includes/header.php');
 <th>DEF</th>
 <th>Set No.</th>
 <th>Price</th>
-<th>Delete</th>
-<th>Edit</th>
+<th>Buy</th>
 </tr>
 <?php foreach ($cards as $card) : ?>
 <tr>
@@ -93,21 +98,10 @@ include('includes/header.php');
 <td><?php echo $card['def']; ?></td>
 <td><?php echo $card['setNumber']; ?></td>
 <td class="right"><?php echo $card['price']; ?></td>
-<td><form action="delete_card.php" method="post"
-id="delete_card_form">
-<input type="hidden" name="card_id"
-value="<?php echo $card['card_ID']; ?>">
-<input type="hidden" name="set_id"
-value="<?php echo $card['set_ID']; ?>">
-<input type="submit" value="Delete">
-</form></td>
-<td><form action="edit_card_form.php" method="post"
-id="delete_card_form">
-<input type="hidden" name="card_id"
-value="<?php echo $card['card_ID']; ?>">
-<input type="hidden" name="set_id"
-value="<?php echo $card['set_ID']; ?>">
-<input type="submit" value="Edit">
+<td><form action="buy_now.php" method="post"id="buynow">
+<input type="hidden" name="card_id"value="<?php echo $card['card_ID']; ?>">
+<input type="hidden" name="set_id" value="<?php echo $card['set_ID']; ?>">
+<input type="submit" value="Buy">
 </form></td>
 </tr>
 <?php endforeach; ?>

@@ -28,7 +28,7 @@ if(isset($_POST['login'])){
     $passwordAttempt = !empty($_POST['password']) ? trim($_POST['password']) : null;
     
     //Retrieve the user account information for the given username.
-    $sql = "SELECT id, username, password FROM users WHERE username = :username";
+    $sql = "SELECT id, username, password, userType FROM users WHERE username = :username";
     $stmt = $pdo->prepare($sql);
     
     //Bind value.
@@ -57,6 +57,7 @@ if(isset($_POST['login'])){
             
             //Provide the user with a login session.
             $_SESSION['user_id'] = $user['id'];
+            $_SESSION['user_Type'] = $user['userType'];
             $_SESSION['logged_in'] = time();
             
             //Redirect to our protected page, which we called home.php
@@ -81,7 +82,7 @@ include('includes/header.php');
             <label for="username">Username</label>
             <input type="text" id="username" name="username"><br>
             <label for="password">Password</label>
-            <input type="text" id="password" name="password"><br>
+            <input type="password" id="password" name="password"><br>
             <input type="submit" name="login" value="Login">
         </form>
         <?php
