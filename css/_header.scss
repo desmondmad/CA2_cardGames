@@ -1,10 +1,10 @@
 header {
-    background-color: red;
+    background-color:$otherblue;
     margin: 0;
     h1 {
     margin: 0;
     padding: .5em 0;
-    color: black;
+    color:$newred;
     }
 }
 
@@ -18,3 +18,21 @@ nav {
         }
     }
 }
+
+.topnav {
+    overflow: hidden;
+    background-color: $darkblue;
+    a {
+        float: left;
+        color: $greypurple;
+        text-align: center;
+        padding: 14px 16px;
+        text-decoration: none;
+        font-size: 17px;
+      }
+
+      a:hover {
+        background-color: $redpurple;
+        color: $newred;
+      }    
+  }

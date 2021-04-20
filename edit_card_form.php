@@ -1,4 +1,18 @@
 <?php
+/**
+ * Start the session.
+ */
+session_start();
+
+/**
+ * Check if the user is logged in.
+ */
+if(!isset($_SESSION['user_id']) || !isset($_SESSION['logged_in'])){
+    //User not logged in. Redirect them back to the login.php page.
+    header('Location: login.php');
+    exit;
+}
+
 require('database.php');
 
 $card_id = filter_input(INPUT_POST, 'card_id', FILTER_VALIDATE_INT);
@@ -16,7 +30,6 @@ $statement->closeCursor();
 <?php
 include('includes/header.php');
 ?>
-<p><a href="index.php">View Homepage</a></p>
         <h1>Edit Product</h1>
         <form action="edit_card.php" method="post" enctype="multipart/form-data"
               id="add_card_form">

@@ -7,4 +7,26 @@
 
 <!-- the body section -->
 <body>
-<header><h1>Draw Phase Card Shop and Collections</h1></header>
+<header><h1>Draw Phase Card Shop and Collections</h1>
+<div class="topnav">
+  <a href="index.php">Home</a>
+  <?php 
+if(isset($_SESSION['logged_in']) && $_SESSION['user_Type'] == 1){
+     echo  "<a href=\"manage_collection.php\">Manage Collection</a>";
+     echo "<a href=\"add_card_form.php\">Add Card</a>";
+     echo   "<a href=\"sets_list.php\">Manage Sets</a>";
+     echo  "<a href=\"logout.php\">Logout</a>";
+}
+  
+if(isset($_SESSION['logged_in']) && $_SESSION['user_Type'] == 0){
+     echo  "<a href=\"contact.php\">Contact</a>";
+     echo  "<a href=\"logout.php\">Logout</a>";     
+  }
+
+if(!isset($_SESSION['user_id']) || !isset($_SESSION['logged_in'])){
+    echo  "<a href=\"register.php\">Register</a>";
+     echo "<a href=\"login.php\">Login</a>";
+}
+?>
+</div>
+</header>

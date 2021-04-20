@@ -15,14 +15,14 @@ h1, h2 {
 }
 
 header {
-  background-color: red;
+  background-color: #2f2fa2;
   margin: 0;
 }
 
 header h1 {
   margin: 0;
   padding: .5em 0;
-  color: black;
+  color: #f64c72;
 }
 
 nav ul {
@@ -35,8 +35,27 @@ nav ul li {
   padding-bottom: 0.5em;
 }
 
+.topnav {
+  overflow: hidden;
+  background-color: #242582;
+}
+
+.topnav a {
+  float: left;
+  color: #99738e;
+  text-align: center;
+  padding: 14px 16px;
+  text-decoration: none;
+  font-size: 17px;
+}
+
+.topnav a:hover {
+  background-color: #553D67;
+  color: #f64c72;
+}
+
 body {
-  background-color: #081abd;
+  background-color: #242582;
 }
 
 .container {

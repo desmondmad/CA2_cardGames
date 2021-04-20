@@ -16,14 +16,22 @@ include('includes/header.php');
 <input type="text" name="email"> <br>
 </p>
 <p>
+<label for='phone'>Phone Number:</label> <br>
+<input type="tel" id="phone" name="phone" pattern="[0-9]{10}">
+</p>
+<p>
+<p>
 <label for='message'>Message:</label> <br>
 <textarea name="message"></textarea>
 </p>
 <input type="submit" value="Submit"><br>
 </form>
-</body>
-
-
+<script language="JavaScript">
+var frmvalidator  = new Validator("contactform");
+frmvalidator.addValidation("name","req","Please provide your name"); 
+frmvalidator.addValidation("email","req","Please provide your email"); 
+frmvalidator.addValidation("email","email","Please enter a valid email address"); 
+</script>
 <?php
 include('includes/footer.php');
 ?>

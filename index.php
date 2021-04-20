@@ -1,4 +1,10 @@
 <?php
+
+
+/**
+ * Print out something that only logged in users can see.
+ */
+
 require_once('database.php');
 
 // Get set ID
@@ -37,6 +43,7 @@ $cards = $statement3->fetchAll();
 $statement3->closeCursor();
 ?>
 
+
 <div class="container">
 <?php
 include('includes/header.php');
@@ -51,8 +58,9 @@ include('includes/header.php');
 <nav>
 <ul>
 <?php foreach ($sets as $set) : ?>
-<li><a href=".?set_id=<?php echo $set['set_ID']; ?>">
-<?php echo $set['name']; ?>
+<li><a href="?set_id=<?php echo $set['set_ID']; ?>">
+<?php echo $set['name'];
+?>
 </a>
 </li>
 <?php endforeach; ?>
@@ -62,8 +70,6 @@ include('includes/header.php');
 
 <section>
 <!-- display a table of cards -->
-
-<h2><?php echo $set['name']; ?></h2>
 <table>
 <tr>
 <th>Image</th>
@@ -77,8 +83,7 @@ include('includes/header.php');
 <th>DEF</th>
 <th>Set No.</th>
 <th>Price</th>
-<th>Delete</th>
-<th>Edit</th>
+<th>Buy</th>
 </tr>
 <?php foreach ($cards as $card) : ?>
 <tr>
@@ -93,27 +98,14 @@ include('includes/header.php');
 <td><?php echo $card['def']; ?></td>
 <td><?php echo $card['setNumber']; ?></td>
 <td class="right"><?php echo $card['price']; ?></td>
-<td><form action="delete_card.php" method="post"
-id="delete_card_form">
-<input type="hidden" name="card_id"
-value="<?php echo $card['card_ID']; ?>">
-<input type="hidden" name="set_id"
-value="<?php echo $card['set_ID']; ?>">
-<input type="submit" value="Delete">
-</form></td>
-<td><form action="edit_card_form.php" method="post"
-id="delete_card_form">
-<input type="hidden" name="card_id"
-value="<?php echo $card['card_ID']; ?>">
-<input type="hidden" name="set_id"
-value="<?php echo $card['set_ID']; ?>">
-<input type="submit" value="Edit">
+<td><form action="buy_now.php" method="post"id="buynow">
+<input type="hidden" name="card_id"value="<?php echo $card['card_ID']; ?>">
+<input type="hidden" name="set_id" value="<?php echo $card['set_ID']; ?>">
+<input type="submit" value="Buy">
 </form></td>
 </tr>
 <?php endforeach; ?>
 </table>
-<p><a href="add_card_form.php">Add Card</a></p>
-<p><a href="sets_list.php">Manage Sets</a></p>
 </section>
 <?php
 include('includes/footer.php');
