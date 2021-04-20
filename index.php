@@ -37,6 +37,7 @@ $cards = $statement3->fetchAll();
 $statement3->closeCursor();
 ?>
 
+
 <div class="container">
 <?php
 include('includes/header.php');
@@ -52,7 +53,8 @@ include('includes/header.php');
 <ul>
 <?php foreach ($sets as $set) : ?>
 <li><a href=".?set_id=<?php echo $set['set_ID']; ?>">
-<?php echo $set['name']; ?>
+<?php echo $set['name'];
+?>
 </a>
 </li>
 <?php endforeach; ?>
@@ -62,8 +64,6 @@ include('includes/header.php');
 
 <section>
 <!-- display a table of cards -->
-
-<h2><?php echo $set['name']; ?></h2>
 <table>
 <tr>
 <th>Image</th>
@@ -112,8 +112,6 @@ value="<?php echo $card['set_ID']; ?>">
 </tr>
 <?php endforeach; ?>
 </table>
-<p><a href="add_card_form.php">Add Card</a></p>
-<p><a href="sets_list.php">Manage Sets</a></p>
 </section>
 <?php
 include('includes/footer.php');

@@ -34,6 +34,10 @@ label,a
 <input type="text" name="email"> <br>
 </p>
 <p>
+<label for='phone'>Phone Number:</label> <br>
+<input type="tel" id="phone" name="phone" pattern="[0-9]{10}">
+</p>
+<p>
 <label for='message'>Message:</label> <br>
 <textarea name="message"></textarea>
 </p>
@@ -45,6 +49,8 @@ var frmvalidator  = new Validator("contactform");
 frmvalidator.addValidation("name","req","Please provide your name"); 
 frmvalidator.addValidation("email","req","Please provide your email"); 
 frmvalidator.addValidation("email","email","Please enter a valid email address"); 
+frmvalidator.addValidation("phone","req","Please provide your phone number");
+frmvalidator.addValidation("phone","phone","Please enter a valid phone number");
 </script>
 
 </body>

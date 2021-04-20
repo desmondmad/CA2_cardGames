@@ -7,4 +7,13 @@
 
 <!-- the body section -->
 <body>
-<header><h1>Draw Phase Card Shop and Collections</h1></header>
+<header><h1>Draw Phase Card Shop and Collections</h1>
+<div class="topnav">
+  <a href="index.php">Home</a>
+  <a href="add_card_form.php">Add Card</a>
+  <a href="sets_list.php">Manage Sets</a>
+  <a href="contact.php">Contact</a>
+  <a href="register.php">Register</a>
+  <a href="login.php">Login</a>
+</div>
+</header>

@@ -14,7 +14,6 @@
 <?php
 include('includes/header.php');
 ?>
-<p><a href="index.php">Homepage</a></p>
     <h1>Sets List</h1>
     <table>
         <tr>

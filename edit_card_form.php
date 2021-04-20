@@ -16,7 +16,6 @@ $statement->closeCursor();
 <?php
 include('includes/header.php');
 ?>
-<p><a href="index.php">View Homepage</a></p>
         <h1>Edit Product</h1>
         <form action="edit_card.php" method="post" enctype="multipart/form-data"
               id="add_card_form">
